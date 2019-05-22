@@ -3,8 +3,9 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import './App.css';
 import logo from './logo.png';
+import Launches from './components/Launches';
 
-const client = new ApolloClient({ uri: 'http://localhost:5000' });
+const client = new ApolloClient({ uri: 'http://localhost:5000/graphql' });
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
               margin: 'auto',
             }}
           />
+          <Launches />
         </div>
       </ApolloProvider>
     );

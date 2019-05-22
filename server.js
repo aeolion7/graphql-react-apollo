@@ -1,8 +1,12 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
+const cors = require('cors');
 
 const app = express();
+
+// Allow Cross-Origin
+app.use(cors());
 
 /*
   With GraphQL and Express, there will only be one endpoint,
