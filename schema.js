@@ -49,6 +49,8 @@ const LaunchType = new GraphQLObjectType({
   }),
 });
 
+const APIBaseUrl = 'https://api.spacexdata.com/v3/launches';
+
 // Root query
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -57,9 +59,19 @@ const RootQuery = new GraphQLObjectType({
       type: GraphQLList(LaunchType),
       async resolve(parent, args) {
         // Inside here is where we actually get the data
-        const { data } = await axios.get(
-          'https://api.spacexdata.com/v3/launches'
-        );
+        const { data } = await axios.get(APIBaseUrl);
+        return data;
+      },
+    },
+    launch: {
+      type: LaunchType,
+      args: {
+        flight_number: {
+          type: GraphQLInt,
+        },
+      },
+      async resolve(parent, args) {
+        const { data } = await axios.get(APIBaseUrl + `/${args.flight_number}`);
         return data;
       },
     },
