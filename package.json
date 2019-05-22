@@ -1,0 +1,29 @@
+{
+  "name": "launch-stats",
+  "version": "1.0.0",
+  "description": "App that lists SpaceX launch missions.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.ks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeolion7/graphql-react-apollo.git"
+  },
+  "author": "Joseph Lionarons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeolion7/graphql-react-apollo/issues"
+  },
+  "homepage": "https://github.com/aeolion7/graphql-react-apollo#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.17.0",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
