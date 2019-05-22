@@ -49,7 +49,8 @@ const LaunchType = new GraphQLObjectType({
   }),
 });
 
-const APIBaseUrl = 'https://api.spacexdata.com/v3/launches';
+const launchUrl = 'https://api.spacexdata.com/v3/launches';
+const rocketUrl = 'https://api.spacexdata.com/v3/rockets';
 
 // Root query
 const RootQuery = new GraphQLObjectType({
@@ -59,7 +60,7 @@ const RootQuery = new GraphQLObjectType({
       type: GraphQLList(LaunchType),
       async resolve(parent, args) {
         // Inside here is where we actually get the data
-        const { data } = await axios.get(APIBaseUrl);
+        const { data } = await axios.get(launchUrl);
         return data;
       },
     },
@@ -71,7 +72,26 @@ const RootQuery = new GraphQLObjectType({
         },
       },
       async resolve(parent, args) {
-        const { data } = await axios.get(APIBaseUrl + `/${args.flight_number}`);
+        const { data } = await axios.get(launchUrl + `/${args.flight_number}`);
+        return data;
+      },
+    },
+    rockets: {
+      type: GraphQLList(RocketType),
+      async resolve(parent, args) {
+        const { data } = await axios.get(rocketUrl);
+        return data;
+      },
+    },
+    rocket: {
+      type: RocketType,
+      args: {
+        id: {
+          type: GraphQLString,
+        },
+      },
+      async resolve(parent, args) {
+        const { data } = await axios.get(rocketUrl + `/${args.id}`);
         return data;
       },
     },
