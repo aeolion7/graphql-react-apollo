@@ -18,7 +18,7 @@ const LAUNCHES_QUERY = gql`
 export class Launches extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <h1 className="display-4 my-3">Launches</h1>
         <MissionKey />
         <Query query={LAUNCHES_QUERY}>
@@ -27,17 +27,17 @@ export class Launches extends Component {
             if (error) console.log(error);
 
             return (
-              <Fragment>
+              <>
                 {data.launches.map(launch => {
                   return (
                     <LaunchItem key={launch.flight_number} launch={launch} />
                   );
                 })}
-              </Fragment>
+              </>
             );
           }}
         </Query>
-      </Fragment>
+      </>
     );
   }
 }
