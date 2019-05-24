@@ -15,7 +15,7 @@ const LAUNCHES_QUERY = gql`
   }
 `;
 
-export class Launches extends Component {
+class Launches extends Component {
   render() {
     return (
       <>

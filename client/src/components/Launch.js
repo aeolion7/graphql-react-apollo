@@ -21,7 +21,7 @@ const LAUNCH_QUERY = gql`
   }
 `;
 
-export class Launch extends Component {
+class Launch extends Component {
   render() {
     let { flight_number } = this.props.match.params;
     flight_number = parseInt(flight_number);
